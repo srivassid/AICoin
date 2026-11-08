@@ -47,15 +47,15 @@ sudo reboot
 
 Download both files into your home folder:
 
-- `uwc-miner-testnet-20261108.2-linux-x64.tar.gz` (2.9 GB)
-- `uwc-miner-testnet-20261108.2-linux-x64.tar.gz.sha256`
-
-Download links: *coming soon.*
+- [uwc-miner-testnet-20261108.2-linux-x64.tar.gz](https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/testnet/uwc-miner-testnet-20261108.2-linux-x64.tar.gz) (2.9 GB)
+- [uwc-miner-testnet-20261108.2-linux-x64.tar.gz.sha256](https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/testnet/uwc-miner-testnet-20261108.2-linux-x64.tar.gz.sha256)
 
 SHA-256: `06f8a667e708eb4dada28a9089650ece7370192e3982c1e82bf74f2e203c3b92`
 
 ```bash
 cd ~
+wget https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/testnet/uwc-miner-testnet-20261108.2-linux-x64.tar.gz
+wget https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/testnet/uwc-miner-testnet-20261108.2-linux-x64.tar.gz.sha256
 sha256sum -c uwc-miner-testnet-20261108.2-linux-x64.tar.gz.sha256    # must print: OK
 tar xzf uwc-miner-testnet-20261108.2-linux-x64.tar.gz
 rm uwc-miner-testnet-20261108.2-linux-x64.tar.gz                     # optional: frees 3 GB
