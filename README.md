@@ -6,6 +6,8 @@ counts toward finding blocks.
 
 **This is a testnet.** Its coins have no value, and the chain may be reset.
 
+**Testing it for us?** Read [TESTING.md](TESTING.md): what to try, and how to report problems.
+
 `uwc-miner` is one download that mines and can run AI jobs. Nothing gets installed on your system:
 everything lives in one folder, and your data in `~/.uwc-miner`.
 
