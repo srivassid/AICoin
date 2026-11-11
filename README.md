@@ -47,19 +47,19 @@ sudo reboot
 
 Download both files into your home folder:
 
-- [uwc-miner-testnet-20261110.2-linux-x64.tar.gz](https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/testnet/uwc-miner-testnet-20261110.2-linux-x64.tar.gz) (2.9 GB)
-- [uwc-miner-testnet-20261110.2-linux-x64.tar.gz.sha256](https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/testnet/uwc-miner-testnet-20261110.2-linux-x64.tar.gz.sha256)
+- [uwc-miner-testnet-20261111.2-linux-x64.tar.gz](https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/testnet/uwc-miner-testnet-20261111.2-linux-x64.tar.gz) (2.9 GB)
+- [uwc-miner-testnet-20261111.2-linux-x64.tar.gz.sha256](https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/testnet/uwc-miner-testnet-20261111.2-linux-x64.tar.gz.sha256)
 
-SHA-256: `dd8e9343610ca4249f046e161f69aa21bd2706e041ea50d53df5bc547de6ce3d`
+SHA-256: `b95c02ba23ad524cbf2433e6d0fb56fa8f8574599718c75aa28aef29e8ff1c28`
 
 ```bash
 cd ~
-wget https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/testnet/uwc-miner-testnet-20261110.2-linux-x64.tar.gz
-wget https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/testnet/uwc-miner-testnet-20261110.2-linux-x64.tar.gz.sha256
-sha256sum -c uwc-miner-testnet-20261110.2-linux-x64.tar.gz.sha256    # must print: OK
-tar xzf uwc-miner-testnet-20261110.2-linux-x64.tar.gz
-rm uwc-miner-testnet-20261110.2-linux-x64.tar.gz                     # optional: frees 3 GB
-cd uwc-miner-testnet-20261110.2
+wget https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/testnet/uwc-miner-testnet-20261111.2-linux-x64.tar.gz
+wget https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/testnet/uwc-miner-testnet-20261111.2-linux-x64.tar.gz.sha256
+sha256sum -c uwc-miner-testnet-20261111.2-linux-x64.tar.gz.sha256    # must print: OK
+tar xzf uwc-miner-testnet-20261111.2-linux-x64.tar.gz
+rm uwc-miner-testnet-20261111.2-linux-x64.tar.gz                     # optional: frees 3 GB
+cd uwc-miner-testnet-20261111.2
 ```
 
 ## 4. Check the GPU
@@ -136,10 +136,10 @@ mining works without it.
 - **Logs:** `~/.uwc-miner/testnet/logs/`: `node.log`, `gateway.log`, `miner-gpu0.log`,
   `jobs.log`.
 - **Update:** stop the miner, unpack the new version and run it from the new folder. Your wallet
-  and data in `~/.uwc-miner/` stay. From block 2700 the testnet runs Rules 4 (Llama and Mistral
-  models): it needs `testnet-20261110.1` or newer, and older packages stop following the chain
-  there. Use `testnet-20261110.2`: with `--jobs`, `.1` also takes pool work for the Llama and
-  Mistral models, which it cannot compute correctly, and loses those bonds.
+  and data in `~/.uwc-miner/` stay. From block 4280 the testnet runs Rules 5 (a job's verifiers
+  must hold its model): it needs `testnet-20261111.1` or newer, and older packages stop following
+  the chain there. Use `testnet-20261111.2`: with `--jobs`, `.1` also tries to take jobs that are
+  meant for another provider, which the chain refuses.
 - **Uninstall:** delete the package folder and `~/.uwc-miner/`. Back up `wallet.json` first if you
   want to keep the coins.
 
