@@ -31,9 +31,8 @@ Work down the list as far as you like. The first three are the most useful.
    catch up with the chain and keep the same wallet.
 5. **Send coins to another tester.** Swap addresses (`./uwc-miner wallet` shows yours) and try
    `./uwc-miner send 5 <their address>`. Check that it arrives.
-6. **Use the jobs page:** <https://165-232-182-224.sslip.io/>. You need a signup code, which you
-   get from whoever invited you; please don't share it. A new key comes with 100 testnet coins.
-   Try:
+6. **Use the jobs page:** <https://165-232-182-224.sslip.io/>. Create a key there (no signup
+   needed); it comes with 100 testnet coins. Try:
    - **Chat**, with each model in the list;
    - **Complete text** with Llama 3.1 8B (a base model: give it the start of a sentence);
    - **Embeddings** (Qwen3);
@@ -71,7 +70,7 @@ Open an issue: <https://github.com/srivassid/AICoin/issues>. Please include:
   Attach `~/uwc-report.txt` to the issue. Look through it first if you're unsure what it contains.
 - For a jobs-page problem: the request ID shown in **My jobs**, and your browser.
 
-**Never post `wallet.json`, your API key or the signup code.** We will never ask for them.
+**Never post `wallet.json` or your API key.** We will never ask for them.
 
 ## Known limits right now
 
