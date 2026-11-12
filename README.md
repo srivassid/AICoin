@@ -8,6 +8,7 @@ counts toward finding blocks.
 
 **Testing it for us?** Read [TESTING.md](TESTING.md): what to try, and how to report problems.
 **How it works:** [the system design guide](docs/system-design.pdf) (PDF, 15 pages).
+**Source code:** [srivassid/useful-work-coin](https://github.com/srivassid/useful-work-coin) (private for now).
 
 `uwc-miner` is one download that mines and can run AI jobs. Nothing gets installed on your system:
 everything lives in one folder, and your data in `~/.uwc-miner`.
