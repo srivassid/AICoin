@@ -4,9 +4,20 @@ AICoin (Useful-Work Coin) is a cryptocurrency mined on NVIDIA GPUs, where mining
 multiplication, the same math AI models run. When your GPU runs paid AI jobs, that work also
 counts toward finding blocks.
 
-**The testnet was retired on 12 November 2026.** AICoin mainnet is running. Its miner package will
-be linked here shortly; until then, the steps below describe the old testnet package, which no
-longer connects to anything.
+**AICoin mainnet launched on 12 November 2026.** The testnet was retired the same day. The mainnet
+miner package will be linked here shortly. Until then, the steps below describe the old testnet
+package, which no longer connects to anything.
+
+| Mainnet | |
+|---|---|
+| Seed node | `165.232.182.224:8690` |
+| Addresses | start with `uwc1p` |
+| Supply | 2.1 billion coins. The block reward starts at 999 coins, about one block a minute, and half the supply is mined in the first 4 years |
+| Reward split | 90% to the miner, 10% to the AI-job pool |
+| Mined coins | spendable after 100 blocks |
+| Dev fund | 21,000,000 coins (1% of supply), paid once in block 1 to `uwc1pxhsl08wxwn37dz3t3rgqwsg76azgwdl6duh4x9lg629umlrppnjsz6d7jz`. No other block can pay it |
+
+Network details and the code: [srivassid/useful-work-coin](https://github.com/srivassid/useful-work-coin#mainnet).
 
 **Testing it for us?** Read [TESTING.md](TESTING.md): what to try, and how to report problems.
 **How it works:** [the system design guide](docs/system-design.pdf) (PDF, 15 pages).
