@@ -19,6 +19,47 @@ package, which no longer connects to anything.
 
 Network details and the code: [srivassid/useful-work-coin](https://github.com/srivassid/useful-work-coin#mainnet).
 
+**Live miners:** <https://aicoin-miners.vercel.app> shows how many miners are active, blocks found
+and the network's work rate, updated every 10 seconds.
+
+## Use the AI API
+
+The mainnet runs paid AI jobs on four models: Qwen3 1.7B, Llama 3.2 3B Instruct, Mistral 7B
+Instruct and Llama 3.1 8B (a base model, for text completion). The API is OpenAI-compatible, and
+the jobs page at <https://165-232-182-224.sslip.io/> does the same in a browser.
+
+1. **Create a key:** **Create key** on the jobs page, or
+   `curl -X POST https://165-232-182-224.sslip.io/v1/keys`. You get an API key and a `uwc1p…`
+   address. Keep the key secret: it spends the coins.
+2. **Fund it:** send coins to that address, for example `./uwc-miner send 20 <address>`. There
+   is no faucet on mainnet. Within 5 minutes they move into the key's jobs balance; one coin stays
+   behind for transaction fees.
+3. **Call it:**
+
+   ```bash
+   curl https://165-232-182-224.sslip.io/v1/chat/completions \
+     -H "Authorization: Bearer $UWC_KEY" -H "Content-Type: application/json" \
+     -d '{"model": "qwen3-1.7b", "messages": [{"role": "user", "content": "Hello"}], "max_tokens": 60}'
+   ```
+
+| Model name | Use | Price per 1,000 tokens |
+|---|---|---|
+| `qwen3-1.7b` | chat, completion, embeddings | 1.5 coins |
+| `llama-3.2-3b-instruct` | chat, completion | 2.5 coins |
+| `mistral-7b-instruct-v0.2` | chat, completion | 5 coins |
+| `llama-3.1-8b` | completion (`/v1/completions`) | 6 coins |
+
+Every request costs at least 0.5 coins. Other endpoints: `/v1/completions`, `/v1/embeddings`,
+`/v1/batches` (many inputs in one request), `GET /v1/account` (balance) and `GET /v1/jobs/<id>`.
+
+**Speed and trust.** Each request becomes an on-chain job that a provider computes and a verifier
+spot-checks, so an answer takes a few minutes, not seconds: it suits batch work better than live
+chat. A request's `trust` goes from `committed` (the answer is back) to `verified` (a verifier
+recomputed part of it) to `final` (the challenge window closed, about 5 hours later).
+
+**Inputs are public.** Prompts are stored on a public data service so that anyone can check the
+work. Don't send personal data, passwords or private documents.
+
 **Testing it for us?** Read [TESTING.md](TESTING.md): what to try, and how to report problems.
 **How it works:** [the system design guide](docs/system-design.pdf) (PDF, 15 pages).
 **Source code:** [srivassid/useful-work-coin](https://github.com/srivassid/useful-work-coin).
