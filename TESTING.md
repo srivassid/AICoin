@@ -1,5 +1,8 @@
 # Testing AICoin: a note for testers
 
+> **The testnet was retired on 12 November 2026**, and this note describes it. Testnet coins, wallets
+> and jobs-page keys no longer work. AICoin mainnet is running; see the [README](README.md).
+
 Thanks for helping test AICoin. This page says what we'd like you to try, what to expect, and how
 to tell us when something goes wrong. Installing is covered in the [README](README.md).
 

@@ -4,7 +4,9 @@ AICoin (Useful-Work Coin) is a cryptocurrency mined on NVIDIA GPUs, where mining
 multiplication, the same math AI models run. When your GPU runs paid AI jobs, that work also
 counts toward finding blocks.
 
-**This is a testnet.** Its coins have no value, and the chain may be reset.
+**The testnet was retired on 12 November 2026.** AICoin mainnet is running. Its miner package will
+be linked here shortly; until then, the steps below describe the old testnet package, which no
+longer connects to anything.
 
 **Testing it for us?** Read [TESTING.md](TESTING.md): what to try, and how to report problems.
 **How it works:** [the system design guide](docs/system-design.pdf) (PDF, 15 pages).
