@@ -21,8 +21,9 @@ Network details and the code: [srivassid/useful-work-coin](https://github.com/sr
 **Live miners:** <https://aicoin-miners.vercel.app> shows how many miners are active, blocks found
 and the network's work rate, updated every 10 seconds.
 
-**Community:** join the AICoin Discord at <https://discord.gg/8A7SQfKa> for help with mining,
-the API and the coin market, and to report problems.
+**Community:** join the AICoin [Discord](https://discord.gg/8A7SQfKa) or
+[Telegram](https://t.me/+ppi1U3_WwWJhYzk1) group for help with mining, the API and the coin
+market, and to report problems.
 
 ## Use the AI API
 
@@ -63,7 +64,7 @@ recomputed part of it) to `final` (the challenge window closed, about 5 hours la
 work. Don't send personal data, passwords or private documents.
 
 **Testing it for us?** Read [TESTING.md](TESTING.md): what to try, and how to report problems.
-Questions: ask on [Discord](https://discord.gg/8A7SQfKa).
+Questions: ask on [Discord](https://discord.gg/8A7SQfKa) or [Telegram](https://t.me/+ppi1U3_WwWJhYzk1).
 **How it works:** [the system design guide](docs/system-design.pdf) (PDF, 15 pages).
 **Source code:** [srivassid/useful-work-coin](https://github.com/srivassid/useful-work-coin).
 
