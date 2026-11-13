@@ -21,6 +21,9 @@ Network details and the code: [srivassid/useful-work-coin](https://github.com/sr
 **Live miners:** <https://aicoin-miners.vercel.app> shows how many miners are active, blocks found
 and the network's work rate, updated every 10 seconds.
 
+**Community:** join the AICoin Discord at <https://discord.gg/8A7SQfKa> for help with mining,
+the API and the coin market, and to report problems.
+
 ## Use the AI API
 
 The mainnet runs paid AI jobs on four models: Qwen3 1.7B, Llama 3.2 3B Instruct, Mistral 7B
@@ -60,6 +63,7 @@ recomputed part of it) to `final` (the challenge window closed, about 5 hours la
 work. Don't send personal data, passwords or private documents.
 
 **Testing it for us?** Read [TESTING.md](TESTING.md): what to try, and how to report problems.
+Questions: ask on [Discord](https://discord.gg/8A7SQfKa).
 **How it works:** [the system design guide](docs/system-design.pdf) (PDF, 15 pages).
 **Source code:** [srivassid/useful-work-coin](https://github.com/srivassid/useful-work-coin).
 
