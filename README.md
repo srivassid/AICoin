@@ -78,7 +78,7 @@ everything lives in one folder, and your data in `~/.uwc-miner`.
 | OS | Linux x86-64: Ubuntu 22.04 or newer, Debian 12 or newer. On Windows, use WSL2. |
 | GPU | NVIDIA RTX 30, 40 or 50 series (tested on RTX 3080 and RTX 5090) |
 | Driver | NVIDIA driver **580 or newer** |
-| Disk | About 15 GB free: package 5 GB, AI model and its data 7 GB, download 3 GB |
+| Disk | About 15 GB free: package 5 GB, AI model and its data 7 GB, download 3 GB. A larger AI model needs more: see [Choose a model](#choose-a-model) |
 | RAM | 8 GB to mine; 16 GB recommended for AI jobs |
 | Network | Outbound access to `165.232.182.224` (ports 8690 and 8692) and `huggingface.co` |
 
@@ -109,19 +109,19 @@ sudo reboot
 
 Download both files into your home folder:
 
-- [uwc-miner-mainnet-20261112.1-linux-x64.tar.gz](https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/mainnet/uwc-miner-mainnet-20261112.1-linux-x64.tar.gz) (2.9 GB)
-- [uwc-miner-mainnet-20261112.1-linux-x64.tar.gz.sha256](https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/mainnet/uwc-miner-mainnet-20261112.1-linux-x64.tar.gz.sha256)
+- [uwc-miner-mainnet-20261120.1-linux-x64.tar.gz](https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/mainnet/uwc-miner-mainnet-20261120.1-linux-x64.tar.gz) (2.9 GB)
+- [uwc-miner-mainnet-20261120.1-linux-x64.tar.gz.sha256](https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/mainnet/uwc-miner-mainnet-20261120.1-linux-x64.tar.gz.sha256)
 
-SHA-256: `cfacb9ee293c28f592b7590cbd27497aa61770dc78762c63000f847c690141dc`
+SHA-256: `d70964223e0f97474e81dbd0f000d20f24d8ee0762e8dee82e294ac7cb6ac300`
 
 ```bash
 cd ~
-wget https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/mainnet/uwc-miner-mainnet-20261112.1-linux-x64.tar.gz
-wget https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/mainnet/uwc-miner-mainnet-20261112.1-linux-x64.tar.gz.sha256
-sha256sum -c uwc-miner-mainnet-20261112.1-linux-x64.tar.gz.sha256    # must print: OK
-tar xzf uwc-miner-mainnet-20261112.1-linux-x64.tar.gz
-rm uwc-miner-mainnet-20261112.1-linux-x64.tar.gz                     # optional: frees 3 GB
-cd uwc-miner-mainnet-20261112.1
+wget https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/mainnet/uwc-miner-mainnet-20261120.1-linux-x64.tar.gz
+wget https://pub-3395e2a5010d4d68a5ec8aeed07a73be.r2.dev/mainnet/uwc-miner-mainnet-20261120.1-linux-x64.tar.gz.sha256
+sha256sum -c uwc-miner-mainnet-20261120.1-linux-x64.tar.gz.sha256    # must print: OK
+tar xzf uwc-miner-mainnet-20261120.1-linux-x64.tar.gz
+rm uwc-miner-mainnet-20261120.1-linux-x64.tar.gz                     # optional: frees 3 GB
+cd uwc-miner-mainnet-20261120.1
 ```
 
 ## 4. Check the GPU
@@ -143,8 +143,9 @@ code and takes a few seconds.
 > **Back up your wallet.** The first run creates `~/.uwc-miner/mainnet/wallet.json` and prints
 > its address. That file is the only way to spend what you earn.
 
-On the first run with `--jobs`, it also downloads the AI model (about 4 GB) and checks that it is
-the exact version the network uses. That takes 5–10 minutes, once. Then it connects, catches up
+On the first run with `--jobs`, it also downloads the AI model (about 4 GB for the default, Qwen3
+1.7B) and checks that it is the exact version the network uses. To host a different model, see
+[Choose a model](#choose-a-model). That takes 5–10 minutes, once. Then it connects, catches up
 with the chain, and prints a status line every 30 seconds:
 
 ```
@@ -159,6 +160,39 @@ height 1700, 1 peer | GPU0 167.6 TMAC/s | 3 blocks won | wallet 0 (+899 maturing
 - **GPU sharing:** while an AI job runs, normal mining on that GPU pauses, and the job itself mines.
 
 Stop it with **Ctrl-C**. It shuts down cleanly in a few seconds.
+
+### Choose a model
+
+With `--jobs` your GPU hosts one of the four models the API serves, and earns from that model's
+paid jobs. Qwen3 1.7B is the default. List them, with what fits your GPU:
+
+```bash
+./uwc-miner models
+```
+
+| Model (`--model`) | Download | GPU memory | Hugging Face account |
+|---|---|---|---|
+| `qwen3-1.7b` (default) | 4.1 GB | 10 GB | not needed |
+| `llama-3.2-3b-instruct` | 6.4 GB | 10 GB | licence + token |
+| `mistral-7b-instruct-v0.2` | 14.5 GB | 10 GB | not needed |
+| `llama-3.1-8b` | 16.1 GB | 16 GB | licence + token |
+
+```bash
+./uwc-miner --jobs --model mistral-7b-instruct-v0.2
+```
+
+- **Disk:** keep about twice the download free. The miner checks the files against the
+  registered checkpoint, then builds a weights store from them (Mistral: 7 minutes, 7.2 GB).
+- **Llama models:** Meta gates them. Make a free account at huggingface.co, open
+  [Llama-3.2-3B-Instruct](https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct) or
+  [Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B), accept the licence, create a read
+  token at huggingface.co/settings/tokens, then run `export HF_TOKEN=<your token>` before
+  starting the miner. The token is only used for the download; uwc-miner does not store it.
+- **Bonds:** a job's bond is at most 10 coins whichever model you host, so the default reserve of
+  100 coins covers it.
+- **Switching:** stop the miner and start it with another `--model`. Downloaded models stay in
+  `~/.uwc-miner/mainnet/models` and `weights`; delete a model's folders there to free the space.
+- `./uwc-miner fetch-model <name>` downloads and checks a model without mining.
 
 ## 6. Keep it running after you close the terminal
 
@@ -186,6 +220,7 @@ Run these while the miner runs, from a second terminal in the same folder.
 |---|---|
 | `--gpus 0,2` | Use only these GPUs (numbers as in `nvidia-smi`) |
 | `--jobs-gpu 1` | Run AI jobs on GPU 1 instead of the first one |
+| `--model <name>` | Host this AI model with `--jobs` (see [Choose a model](#choose-a-model)) |
 | `--address <addr>` | Pay mined blocks to another address |
 | `--reserve 0` | Don't move coins into the jobs balance automatically |
 | `--nolisten` | Accept no incoming connections |
